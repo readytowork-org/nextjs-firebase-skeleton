@@ -11,6 +11,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.27.2",
+    "firebase": "^9.9.3",
     "next": "12.2.5",
     "next-images": "^1.8.4",
     "react": "18.2.0",
