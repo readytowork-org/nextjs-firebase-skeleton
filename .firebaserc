@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "next-srr",
+    "dev": "next-srr"
+  },
+  "targets": {
+    "next-ssr": {
+      "hosting": {
+        "ssr-next-client": [
+          "ssr-next-dev-site"
+        ]
+      }
+    }
+  }
+}
