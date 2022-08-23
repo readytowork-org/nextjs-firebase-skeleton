@@ -22,14 +22,14 @@ const Home: React.FC<IHomeProps> = ({ jobs }) => {
         <div className={styles.grid}>
           {jobs.map((job, index) => (
             <Link href={`/jobs/${job.id}`} key={index}>
-              <Card style={{ width: '18rem' }} >
-                <img alt="Sample" src="https://picsum.photos/300/200" />
+              <Card style={{ width: "18rem" }}>
+                <img alt={"Sample"} src={"https://picsum.photos/300/200"} />
                 <CardBody>
-                  <CardTitle tag="h5">{job.title}</CardTitle>
-                  <CardSubtitle className="mb-2 text-muted" tag="h6">{job.category}
+                  <CardTitle tag={"h5"}>{job.title}</CardTitle>
+                  <CardSubtitle className={"mb-2 text-muted"} tag={"h6"}>
+                    {job.category}
                   </CardSubtitle>
-                  <CardText> {job.description}
-                  </CardText>
+                  <CardText>{job.description}</CardText>
                 </CardBody>
               </Card>
             </Link>

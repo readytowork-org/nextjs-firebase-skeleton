@@ -1,4 +1,3 @@
-import Head from "next/head";
 import styles from "../../../styles/Home.module.css";
 import { getJobsDetail, JobsProps } from "../../services/jobs";
 
@@ -9,7 +8,7 @@ interface IJobProps {
 const Job: React.FC<IJobProps> = ({ job }) => {
     return (
         <div className={styles.container}>
-            <main >
+            <main>
                 <h1 className={styles.title}>{"Job Detail"}</h1>
                 <div>
                     <h2>{job.title}</h2>
@@ -19,7 +18,7 @@ const Job: React.FC<IJobProps> = ({ job }) => {
             </main>
         </div>
     );
-}
+};
 
 export async function getServerSideProps({ params }) {
     const id = params.id;

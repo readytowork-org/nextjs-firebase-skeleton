@@ -4,7 +4,7 @@ import { getFirestore } from "firebase/firestore";
 
 let firebaseApp = null as any;
 if (!getApps.length) {
-   firebaseApp = initializeApp({
+  firebaseApp = initializeApp({
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
     projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
