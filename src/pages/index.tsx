@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/Home.module.css";
 import { getJobsList, JobsProps } from "../services/jobs";
+import { Card, CardBody, CardTitle, CardSubtitle, CardText } from "reactstrap";
 
 interface IHomeProps {
   jobs: Array<JobsProps>;
@@ -16,15 +17,21 @@ const Home: React.FC<IHomeProps> = ({ jobs }) => {
         <link rel={"icon"} href={"/favicon.ico"} />
       </Head>
 
-      <main className={styles.main}>
+      <main>
         <h1 className={styles.title}>{"Job List"}</h1>
         <div className={styles.grid}>
           {jobs.map((job, index) => (
             <Link href={`/jobs/${job.id}`} key={index}>
-              <a className={styles.card}>
-                <h2>{job.title} &rarr;</h2>
-                <p>{job.description}</p>
-              </a>
+              <Card style={{ width: '18rem' }} >
+                <img alt="Sample" src="https://picsum.photos/300/200" />
+                <CardBody>
+                  <CardTitle tag="h5">{job.title}</CardTitle>
+                  <CardSubtitle className="mb-2 text-muted" tag="h6">{job.category}
+                  </CardSubtitle>
+                  <CardText> {job.description}
+                  </CardText>
+                </CardBody>
+              </Card>
             </Link>
           ))}
         </div>
