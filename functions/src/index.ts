@@ -4,11 +4,10 @@ const isDev = process.env.NODE_ENV !== "production";
 
 const nextServer = next({
   dev: isDev,
-  conf: {distDir: ".next"},
+  conf: { distDir: ".next" },
 });
 
 const nextjsHandle = nextServer.getRequestHandler();
 exports.nextServer = functions.https.onRequest(async (req, res) => {
   return nextServer.prepare().then(() => nextjsHandle(req, res));
 });
-
