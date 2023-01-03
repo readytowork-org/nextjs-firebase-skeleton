@@ -1,17 +1,17 @@
 {
   "name": "functions",
   "scripts": {
-    "lint": "eslint --ext .js,.ts .",
-    "build": "tsc",
-    "build:watch": "tsc --watch",
-    "serve": "npm run build && firebase emulators:start --only functions",
-    "shell": "npm run build && firebase functions:shell",
-    "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
+    "build": "yarn lint && concurrently \"yarn:build-tsc\"  \"yarn:build-pug\"",
+    "build-tsc": "tsc",
+    "build-pug": "cpx src/**/*.pug lib",
+    "lint": "tslint --project tsconfig.json",
+    "start": "NODE_ENV=local concurrently \"yarn:start-tsc\" \"yarn:start-pug\"",
+    "start-w": "set NODE_ENV=local && concurrently \"yarn:start-tsc\" \"yarn:start-pug\"",
+    "start-tsc": "tsc --watch",
+    "start-pug": "cpx src/**/*.pug lib --watch",
+    "shell": "NODE_ENV=local firebase functions:shell",
+    "shell-w": "set NODE_ENV=local && firebase functions:shell",
     "logs": "firebase functions:log"
-  },
-  "engines": {
-    "node": "16"
   },
   "main": "lib/index.js",
   "dependencies": {
@@ -25,10 +25,13 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.12.0",
     "@typescript-eslint/parser": "^5.12.0",
+    "concurrently": "^7.6.0",
+    "cpx": "^1.5.0",
     "eslint": "^8.9.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-import": "^2.25.4",
     "firebase-functions-test": "^0.2.0",
+    "tslint": "^6.1.3",
     "typescript": "^4.5.4"
   },
   "private": true
