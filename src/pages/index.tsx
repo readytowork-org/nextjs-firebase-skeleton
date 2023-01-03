@@ -2,7 +2,9 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/Home.module.css";
 import { getJobsList, JobsProps } from "../services/jobs";
-import { Card, CardBody, CardTitle, CardSubtitle, CardText } from "reactstrap";
+import { DatePicker, Card } from "antd";
+
+const { Meta } = Card;
 
 interface IHomeProps {
   jobs: Array<JobsProps>;
@@ -19,18 +21,22 @@ const Home: React.FC<IHomeProps> = ({ jobs }) => {
 
       <main>
         <h1 className={styles.title}>{"Job List"}</h1>
+        <DatePicker />
         <div className={styles.grid}>
           {jobs.map((job, index) => (
             <Link href={`/jobs/${job.id}`} key={index}>
-              <Card style={{ width: "18rem" }}>
-                <img alt={"Sample"} src={"https://picsum.photos/300/200"} />
-                <CardBody>
-                  <CardTitle tag={"h5"}>{job.title}</CardTitle>
-                  <CardSubtitle className={"mb-2 text-muted"} tag={"h6"}>
-                    {job.category}
-                  </CardSubtitle>
-                  <CardText>{job.description}</CardText>
-                </CardBody>
+              <Card
+                hoverable
+                style={{ width: 240 }}
+                cover={
+                  <img
+                    alt={job.title}
+                    src={"https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"}
+                  />
+                }
+              >
+                <Meta title={job.title} description={job.category} />
+                <p>{job.description}</p>
               </Card>
             </Link>
           ))}
