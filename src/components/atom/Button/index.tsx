@@ -101,7 +101,7 @@ const StyledButton = styled(Button)`
   min-height: ${({ minheight }: ButtonProps) => {
     return minheight && `${minheight}px`;
   }};
-`
+`;
 
 export const ButtonComponent: React.FC<ButtonProps> = ({
   children,
@@ -113,7 +113,7 @@ export const ButtonComponent: React.FC<ButtonProps> = ({
   return (
     <Wrapper {...rest}>
       <StyledButton
-        onClick={onClick}
+        onClick={onClick as any}
         htmlType={htmlType}
         loading={loading}
         {...rest}

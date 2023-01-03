@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/Home.module.css";
 import { getJobsList, JobsProps } from "../services/jobs";
-import { DatePicker, Card } from "antd";
+import { Card } from "antd";
 
 const { Meta } = Card;
 
@@ -21,7 +21,6 @@ const Home: React.FC<IHomeProps> = ({ jobs }) => {
 
       <main>
         <h1 className={styles.title}>{"Job List"}</h1>
-        <DatePicker />
         <div className={styles.grid}>
           {jobs.map((job, index) => (
             <Link href={`/jobs/${job.id}`} key={index}>
@@ -31,7 +30,9 @@ const Home: React.FC<IHomeProps> = ({ jobs }) => {
                 cover={
                   <img
                     alt={job.title}
-                    src={"https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"}
+                    src={
+                      "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                    }
                   />
                 }
               >

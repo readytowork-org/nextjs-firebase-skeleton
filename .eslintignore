@@ -1,0 +1,10 @@
+**/node_modules/**
+**/build/**
+**/lib/**
+**/functions/**
+craco.config.js
+release_confirm.js
+package.json
+README.md
+.eslintrc.js
+*.d.ts

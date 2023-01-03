@@ -1,9 +1,10 @@
+/* eslint-disable prettier/prettier */
 import styles from "../../../styles/Home.module.css";
 import { getJobsDetail, JobsProps } from "../../services/jobs";
 
 interface IJobProps {
     job: JobsProps;
-}
+};
 
 const Job: React.FC<IJobProps> = ({ job }) => {
     return (
@@ -24,9 +25,8 @@ export async function getServerSideProps({ params }) {
     const id = params.id;
     const jobDetail = await getJobsDetail(id);
     return {
-        props: { job: jobDetail }
+        props: { job: jobDetail },
     };
 }
-
 
 export default Job;
