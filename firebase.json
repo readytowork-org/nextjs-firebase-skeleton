@@ -20,8 +20,12 @@
     ],
     "rewrites": [
       {
-        "source": "functions",
-        "function": "nextServer"
+        "source": "/api/**",
+        "function": "api"
+      },
+      {
+        "source": "**/**",
+        "function": "next"
       }
     ]
   },
