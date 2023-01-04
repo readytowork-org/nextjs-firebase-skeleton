@@ -9,6 +9,7 @@
     "start": "next start",
     "start-functions": "yarn --cwd functions start",
     "build-functions": "yarn --cwd functions run build",
+    "serve-functions": "yarn --cwd functions run serve",
     "shell": "yarn --cwd functions run shell",
     "lint": "next lint",
     "storybook": "start-storybook -p 6006",

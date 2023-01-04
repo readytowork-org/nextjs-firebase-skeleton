@@ -8,8 +8,10 @@
     "strict": true,
     "esModuleInterop": true,
     "typeRoots": ["./node_modules/@types"],
-    "target": "ES6"
+    "target": "es2017"
   },
   "compileOnSave": true,
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

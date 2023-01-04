@@ -1,8 +1,5 @@
 {
   "name": "functions",
-  "engines": {
-    "node": "14"
-  },
   "scripts": {
     "build": "yarn lint && concurrently \"yarn:build-tsc\"  \"yarn:build-pug\"",
     "build-tsc": "tsc",
@@ -12,9 +9,13 @@
     "start-w": "set NODE_ENV=local && concurrently \"yarn:start-tsc\" \"yarn:start-pug\"",
     "start-tsc": "tsc --watch",
     "start-pug": "cpx src/**/*.pug lib --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
     "shell": "NODE_ENV=local firebase functions:shell",
-    "shell-w": "set NODE_ENV=local && firebase functions:shell",
+    "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
   },
   "main": "lib/index.js",
   "dependencies": {
