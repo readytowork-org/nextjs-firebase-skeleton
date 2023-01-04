@@ -32,6 +32,6 @@ const nextServer = next({
 });
 
 const nextjsHandle = nextServer.getRequestHandler();
-exports.nextServer = functions.https.onRequest(async (req, res) => {
+exports.next = functions.https.onRequest(async (req, res) => {
   return nextServer.prepare().then(() => nextjsHandle(req, res));
 });
