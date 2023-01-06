@@ -1,13 +1,27 @@
-import * as functions from "firebase-functions";
+import { https } from "firebase-functions";
 import next from "next";
-const isDev = process.env.NODE_ENV !== "production";
+import express from "express";
+import cors from "cors";
+import jobs from "./jobs";
 
+const app = express();
+app.use(express.json());
+app.use(cors({ origin: true }));
+app.use("/jobs", jobs);
+
+const main = express();
+main.use("/", app);
+exports.api = https.onRequest(main);
+
+console.log("env", process.env.NODE_ENV);
 const nextServer = next({
-  dev: isDev,
+  dev: false,
   conf: { distDir: ".next" },
 });
 
 const nextjsHandle = nextServer.getRequestHandler();
-exports.nextServer = functions.https.onRequest(async (req, res) => {
+
+exports.api = https.onRequest(main);
+exports.next = https.onRequest(async (req, res) => {
   return nextServer.prepare().then(() => nextjsHandle(req, res));
 });
