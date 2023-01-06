@@ -1,5 +1,6 @@
 import * as express from "express";
 import * as admin from "firebase-admin";
+import { buildResultsDocs } from "./utils";
 
 const serviceAccount = require("../serviceAccountKey.json");
 admin.initializeApp({
@@ -13,8 +14,8 @@ const router = express.Router();
 
 router.get('/',  async (req:express.Request,res:express.Response) => {
     try {
-    const jobs = await db.collection('Jobs').get();
-    res.status(200).json(jobs)
+    const jobs = await db.collection('jobs').get();
+    res.status(200).json(buildResultsDocs(jobs))
     } catch (error) {
         res.sendStatus(400)
     }

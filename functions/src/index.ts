@@ -1,26 +1,27 @@
-import * as functions from "firebase-functions"
-import * as express from "express";
-import * as cors from "cors";
-import jobs from './jobs';
-
+import { https } from "firebase-functions";
 import next from "next";
+import express from "express";
+import cors from "cors";
+import jobs from "./jobs";
 
 const app = express();
 app.use(express.json());
 app.use(cors({ origin: true }));
-app.use("/jobs",jobs)
+app.use("/jobs", jobs);
 
 const main = express();
-main.use("/api", app);
-exports.api = functions.https.onRequest(main);
+main.use("/", app);
+exports.api = https.onRequest(main);
 
-const isDev = process.env.NODE_ENV !== "production";
+console.log("env", process.env.NODE_ENV);
 const nextServer = next({
-  dev: isDev,
+  dev: false,
   conf: { distDir: ".next" },
 });
 
 const nextjsHandle = nextServer.getRequestHandler();
-exports.next = functions.https.onRequest(async (req:express.Request,res:express.Response) => {
+
+exports.api = https.onRequest(main);
+exports.next = https.onRequest(async (req, res) => {
   return nextServer.prepare().then(() => nextjsHandle(req, res));
 });
