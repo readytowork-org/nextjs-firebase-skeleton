@@ -13,7 +13,6 @@ const db = admin.firestore();
 const router = express.Router();
 
 router.get('/',  async (req:express.Request,res:express.Response) => {
-    console.log("DKD")
     try {
     const jobs = await db.collection('jobs').get();
     res.status(200).json(buildResultsDocs(jobs))

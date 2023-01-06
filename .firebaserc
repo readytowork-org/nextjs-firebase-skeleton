@@ -7,7 +7,7 @@
     "readytoworkjapan": {
       "hosting": {
         "ssr-next-client": [
-          "ssr-next-dev-site"
+          "readytoworkjapan"
         ]
       }
     }

@@ -7,4 +7,8 @@ typings/
 
 # Node.js dependency directory
 node_modules/
+
+serviceAccountKey.json
+serviceAccountKey.json.example
+
 /.next/
