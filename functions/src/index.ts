@@ -1,4 +1,4 @@
-import { https } from "firebase-functions";
+import { https, region } from "firebase-functions";
 import next from "next";
 import express from "express";
 import cors from "cors";
@@ -21,7 +21,7 @@ const nextServer = next({
 
 const nextjsHandle = nextServer.getRequestHandler();
 
-exports.api = https.onRequest(main);
-exports.next = https.onRequest(async (req, res) => {
+exports.api = region("asia-northeast1").https.onRequest(main);
+exports.next = region("asia-northeast1").https.onRequest(async (req, res) => {
   return nextServer.prepare().then(() => nextjsHandle(req, res));
 });
